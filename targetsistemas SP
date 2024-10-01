@@ -1,0 +1,125 @@
+//1//
+#include <stdio.h>
+
+int main() {
+    int INDICE = 13, SOMA = 0, K = 0;
+
+    while (K < INDICE) {
+        K = K + 1;
+        SOMA = SOMA + K;
+    }
+
+    printf("Valor final de SOMA: %d\n", SOMA);  // Resultado esperado: 91
+    return 0;
+}
+//2//
+#include <stdio.h>
+
+int isFibonacci(int num) {
+    int a = 0, b = 1, temp;
+
+    while (b < num) {
+        temp = b;
+        b = a + b;
+        a = temp;
+    }
+    
+    return (b == num || a == num);
+}
+
+int main() {
+    int numero;
+
+    printf("Informe um número para verificar se pertence à sequência de Fibonacci: ");
+    scanf("%d", &numero);
+
+    if (isFibonacci(numero)) {
+        printf("%d pertence à sequência de Fibonacci.\n", numero);
+    } else {
+        printf("%d NÃO pertence à sequência de Fibonacci.\n", numero);
+    }
+
+    return 0;
+}
+//3//
+#include <stdio.h>
+
+#define DIAS 30
+
+int main() {
+    float faturamento[DIAS] = {100, 200, 0, 150, 0, 300, 50, 400, 0, 250, 
+                               0, 100, 0, 200, 150, 400, 350, 0, 300, 0,
+                               0, 200, 0, 50, 600, 0, 100, 0, 450, 500};
+    float soma = 0, media = 0, menor = faturamento[0], maior = faturamento[0];
+    int dias_acima_media = 0, dias_validos = 0;
+
+    // Cálculo da soma e determinação do menor/maior faturamento
+    for (int i = 0; i < DIAS; i++) {
+        if (faturamento[i] > 0) {  // Ignorando dias sem faturamento
+            soma += faturamento[i];
+            dias_validos++;
+            if (faturamento[i] < menor) menor = faturamento[i];
+            if (faturamento[i] > maior) maior = faturamento[i];
+        }
+    }
+
+    // Cálculo da média
+    media = soma / dias_validos;
+
+    // Contagem dos dias com faturamento acima da média
+    for (int i = 0; i < DIAS; i++) {
+        if (faturamento[i] > media) {
+            dias_acima_media++;
+        }
+    }
+
+    // Resultados
+    printf("Menor faturamento: %.2f\n", menor);
+    printf("Maior faturamento: %.2f\n", maior);
+    printf("Dias com faturamento acima da média: %d\n", dias_acima_media);
+
+    return 0;
+}
+//4//
+#include <stdio.h>
+
+int main() {
+    float sp = 67836.43, rj = 36678.66, mg = 29229.88, es = 27165.48, outros = 19849.53;
+    float total = sp + rj + mg + es + outros;
+
+    printf("Percentual de SP: %.2f%%\n", (sp / total) * 100);
+    printf("Percentual de RJ: %.2f%%\n", (rj / total) * 100);
+    printf("Percentual de MG: %.2f%%\n", (mg / total) * 100);
+    printf("Percentual de ES: %.2f%%\n", (es / total) * 100);
+    printf("Percentual de Outros: %.2f%%\n", (outros / total) * 100)
+    return 0;
+}
+//5//
+#include <stdio.h>
+#include <string.h>
+
+void inverterString(char str[]) {
+    int n = strlen(str);
+    for (int i = 0; i < n / 2; i++) {
+        char temp = str[i];
+        str[i] = str[n - i - 1];
+        str[n - i - 1] = temp;
+    }
+}
+
+int main() {
+    char palavra[100];
+
+    // Solicita a string do usuário
+    printf("Digite uma palavra para inverter: ");
+    scanf("%s", palavra);
+
+    // Inverte a string
+    inverterString(palavra);
+
+    // Exibe a string invertida
+    printf("Palavra invertida: %s\n", palavra);
+
+    return 0;
+}
+
